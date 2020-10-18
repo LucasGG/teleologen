@@ -27,7 +27,7 @@ class Genetic
 
     # Calculate population ranges for pool.
     def ranges
-      correlations = @population.to_h { |individual| [individual, fitness: fitness(individual)] }
+      correlations = @population.to_h { |individual| [individual, { fitness: fitness(individual) }] }
 
       total_fitness = correlations.sum { |*, info| info[:fitness] }
 

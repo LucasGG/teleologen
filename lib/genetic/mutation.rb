@@ -12,7 +12,13 @@ class Genetic
     def child
       chromosomes = @individual.genotype.map do |chromosome|
         Chromosome.new(
-          chromosome.alleles.map { |allele| rand < @ratio ? (allele == '0' ? '1' : '0') : allele }.join,
+          chromosome.alleles.map do |allele|
+            if rand < @ratio
+              allele == '0' ? '1' : '0'
+            else
+              allele
+            end
+          end.join,
           klass: chromosome.klass
         )
       end

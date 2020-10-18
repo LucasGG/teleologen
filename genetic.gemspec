@@ -17,7 +17,7 @@ Gem::Specification.new do |specification|
   specification.homepage = 'https://github.com/lucasgg/genetic'
 
   # https://guides.rubygems.org/make-your-own-gem/
-  specification.files = Dir["{lib}/**/*.rb", "bin/*", "LICENSE", "*.md"]
+  specification.files = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
   specification.licenses = ['MIT']
 
   specification.executables << 'genetic'

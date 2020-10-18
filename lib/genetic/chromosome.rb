@@ -3,8 +3,7 @@
 class Genetic
   # Binary chromosome.
   class Chromosome
-    attr_reader :string
-    attr_reader :klass
+    attr_reader :string, :klass
 
     def initialize(string = '', klass:)
       @string = string
@@ -28,7 +27,7 @@ class Genetic
     end
 
     def ==(other)
-      self.string == other.string && self.klass == other.klass
+      string == other.string && klass == other.klass
     end
   end
 end

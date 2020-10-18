@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Integer
+  TELEOLOGEN_TO_LAMBDA = ->(n) { n <= 1 ? (n % 2).to_s : TELEOLOGEN_TO_LAMBDA.call(n / 2).concat((n % 2).to_s) }
+
   def to_chromosome
-    functor = lambda { |n| n <= 1 ? (n % 2).to_s : functor.call(n / 2).concat((n % 2).to_s) }
-    Genetic::Chromosome.new(functor.call(self).rjust(32, '0'), klass: self.class)
+    Genetic::Chromosome.new(TELEOLOGEN_TO_LAMBDA.call(self).rjust(32, '0'), klass: self.class)
   end
 
   def self.from_chromosome(chromosome)

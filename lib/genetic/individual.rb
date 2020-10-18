@@ -2,8 +2,7 @@
 
 class Genetic
   class Individual
-    attr_reader :genotype
-    attr_reader :behavior
+    attr_reader :genotype, :behavior
 
     def initialize(*genotype, &behavior)
       @genotype = genotype
