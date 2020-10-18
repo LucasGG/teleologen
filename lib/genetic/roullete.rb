@@ -19,16 +19,14 @@ class Genetic
     # Roll one individual.
 
     def roll(n: rand)
-      @ranges ||= ranges
-      @ranges.find { |range| range[1][:survivability].cover?(n) }&.first || @ranges.sample.first
+      @survivabilities ||= survivabilities(correlations: @population.to_h { |individual| [individual, { fitness: fitness(individual) }] })
+      @survivabilities.find { |range| range[1][:survivability].cover?(n) }&.first || @survivabilities.sample.first
     end
 
     private
 
-    # Calculate population ranges for pool.
-    def ranges
-      correlations = @population.to_h { |individual| [individual, { fitness: fitness(individual) }] }
-
+    # Calculate population survivabilities.
+    def survivabilities(correlations: {})
       total_fitness = correlations.sum { |*, info| info[:fitness] }
 
       correlations.each.with_object(pivot: 0.0).map do |correlation, actual_range|
