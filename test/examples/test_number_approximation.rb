@@ -9,11 +9,11 @@ class TestNumberApproximation < Minitest::Test
 
   def test_approximate_goal
     teleology = Genetic::Teleology.new do |behavior|
-      GOAL / ((behavior - GOAL).abs ** 1.8 + 1)
+      GOAL / ((behavior - GOAL).abs**1.8 + 1)
     end
 
     population = Array.new(100) do
-      Genetic::Individual.new(rand(0..100000).to_chromosome) do |genotype|
+      Genetic::Individual.new(rand(0..100_000).to_chromosome) do |genotype|
         genotype.first.to_parameter
       end
     end
@@ -23,9 +23,9 @@ class TestNumberApproximation < Minitest::Test
                                         .reproduce(100, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
     end
 
-    best = population.sort_by { |individual| teleology.calculate(individual.call) }.last
+    best = population.max_by { |individual| teleology.calculate(individual.call) }
 
-    puts %Q(
+    puts %(
       Individual: #{best}
       Parameters: #{best.genotype.map(&:to_parameter).join(', ')}
       Fitness: #{teleology.calculate(best.call)}

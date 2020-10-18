@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Genetic
+  ##
   # Binary chromosome.
+
   class Chromosome
     attr_reader :string, :klass
 
