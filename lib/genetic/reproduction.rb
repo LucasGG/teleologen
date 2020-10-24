@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Genetic
+  ##
   # Reproduction between individuals.
+
   class Reproduction
     def initialize(population)
       @mating_pool = population

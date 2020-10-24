@@ -25,7 +25,9 @@ class Genetic
 
     private
 
+    ##
     # Calculate population survivabilities.
+
     def survivabilities(correlations: {})
       total_fitness = correlations.sum { |*, info| info[:fitness] }
 
