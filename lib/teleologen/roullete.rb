@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Genetic
+class Teleologen
   ##
   # This class represents the roullete implementation for genetic algorithm.
   #

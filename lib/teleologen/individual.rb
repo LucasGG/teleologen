@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Genetic
+class Teleologen
   class Individual
     attr_reader :genotype, :behavior
 

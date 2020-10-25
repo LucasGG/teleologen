@@ -2,27 +2,27 @@
 
 require 'minitest/autorun'
 
-require 'genetic'
+require 'teleologen'
 
 class TestCrossOver < Minitest::Test
   INDIVIDUALS = [
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Genetic::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter }
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter }
   ].freeze
 
   def test_child
     100.times do
       first_parent = INDIVIDUALS.sample
       second_parent = INDIVIDUALS.sample
-      child = Genetic::CrossOver.new(first_parent, second_parent).child
+      child = Teleologen::CrossOver.new(first_parent, second_parent).child
       assert child?(child, first_parent, second_parent)
     end
   end

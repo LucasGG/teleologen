@@ -3,21 +3,21 @@
 require 'minitest/autorun'
 require 'minitest/benchmark'
 
-require 'genetic'
+require 'teleologen'
 
 module TestChromosomes
   class TestInteger < Minitest::Test
     CHROMOSOME_CONVERSIONS = [
-      [10, Genetic::Chromosome.new('1010'.rjust(32, '0'), klass: Integer)],
-      [6, Genetic::Chromosome.new('110'.rjust(32, '0'), klass: Integer)],
-      [26, Genetic::Chromosome.new('11010'.rjust(32, '0'), klass: Integer)],
-      [11, Genetic::Chromosome.new('1011'.rjust(32, '0'), klass: Integer)],
-      [80, Genetic::Chromosome.new('1010000'.rjust(32, '0'), klass: Integer)],
-      [191, Genetic::Chromosome.new('10111111'.rjust(32, '0'), klass: Integer)],
-      [1, Genetic::Chromosome.new('1'.rjust(32, '0'), klass: Integer)],
-      [0, Genetic::Chromosome.new('0'.rjust(32, '0'), klass: Integer)],
-      [3, Genetic::Chromosome.new('11'.rjust(32, '0'), klass: Integer)],
-      [2, Genetic::Chromosome.new('10'.rjust(32, '0'), klass: Integer)]
+      [10, Teleologen::Chromosome.new('1010'.rjust(32, '0'), klass: Integer)],
+      [6, Teleologen::Chromosome.new('110'.rjust(32, '0'), klass: Integer)],
+      [26, Teleologen::Chromosome.new('11010'.rjust(32, '0'), klass: Integer)],
+      [11, Teleologen::Chromosome.new('1011'.rjust(32, '0'), klass: Integer)],
+      [80, Teleologen::Chromosome.new('1010000'.rjust(32, '0'), klass: Integer)],
+      [191, Teleologen::Chromosome.new('10111111'.rjust(32, '0'), klass: Integer)],
+      [1, Teleologen::Chromosome.new('1'.rjust(32, '0'), klass: Integer)],
+      [0, Teleologen::Chromosome.new('0'.rjust(32, '0'), klass: Integer)],
+      [3, Teleologen::Chromosome.new('11'.rjust(32, '0'), klass: Integer)],
+      [2, Teleologen::Chromosome.new('10'.rjust(32, '0'), klass: Integer)]
     ].freeze
 
     def test_to_chromosome

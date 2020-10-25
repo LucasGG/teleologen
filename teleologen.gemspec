@@ -2,25 +2,25 @@
 
 # https://github.com/wycats/newgem-template/blob/master/newgem.gemspec
 Gem::Specification.new do |specification|
-  specification.name = 'genetic'
+  specification.name = 'teleologen'
 
   specification.version = '0.0.0'
 
-  specification.summary = 'Genetic'
+  specification.summary = 'Teleologen'
 
   specification.description = <<-DESCRIPTION
-    Genetic is good!
+    Simple and cool genetic algorithm implementation.
   DESCRIPTION
 
   specification.authors = ['Lucas Guimarães Gonçalves']
   specification.email = 'lucasggcel@gmail.com'
-  specification.homepage = 'https://github.com/lucasgg/genetic'
+  specification.homepage = 'https://github.com/lucasgg/teleologen'
 
   # https://guides.rubygems.org/make-your-own-gem/
   specification.files = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
   specification.licenses = ['MIT']
 
-  specification.executables << 'genetic'
+  specification.executables << 'teleologen'
 
   # specification.metadata = {
   #   "bug_tracker_uri"   => "https://github.com/ruby/rake/issues",
