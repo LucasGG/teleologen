@@ -20,7 +20,7 @@ class TestNumberApproximation < Minitest::Test
 
     500.times do
       population = Teleologen::Reproduction.new(population)
-                                        .reproduce(100, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
+                                           .reproduce(100, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
     end
 
     best = population.max_by { |individual| teleology.calculate(individual.call) }

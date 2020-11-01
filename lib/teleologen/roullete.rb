@@ -40,7 +40,7 @@ class Teleologen
     def generate_range(info, survivability, total_fitness)
       fitness = info[:fitness]
       pivot = survivability[:pivot]
-      survivability_range = total_fitness.zero? ? 0.0...0.0 : pivot...(pivot + fitness / total_fitness.to_f)
+      survivability_range = total_fitness.zero? ? 0.0...0.0 : pivot...(pivot + fitness / total_fitness)
       info[:survivability] = survivability_range
       survivability[:pivot] = survivability_range.last
     end

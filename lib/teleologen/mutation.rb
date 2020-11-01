@@ -15,19 +15,23 @@ class Teleologen
 
     def child
       chromosomes = @individual.genotype.map do |chromosome|
-        Chromosome.new(
-          chromosome.alleles.map do |allele|
-            if rand < @ratio
-              allele == '0' ? '1' : '0'
-            else
-              allele
-            end
-          end.join,
-          klass: chromosome.klass
-        )
+        Chromosome.new(chromosome.alleles.map { |allele| mutate(allele) }.join, klass: chromosome.klass)
       end
 
       Individual.new(*chromosomes, &@individual.behavior)
+    end
+
+    private
+
+    ##
+    # Simple mutation, 0 to 1 or 1 to 0 with a @ratio chance.
+
+    def mutate(allele)
+      if rand < @ratio
+        allele == '0' ? '1' : '0'
+      else
+        allele
+      end
     end
   end
 end
