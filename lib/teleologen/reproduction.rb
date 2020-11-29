@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class Teleologen
-  ##
   # Reproduction between individuals.
-
   class Reproduction
+    # Creates a new +reproduction+ model for a population of +individual+s.
     def initialize(population)
       @mating_pool = population
     end

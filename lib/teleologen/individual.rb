@@ -9,16 +9,12 @@ class Teleologen
       @behavior = behavior
     end
 
-    ##
     # Call behavior.
-
     def call
       @behavior.call(@genotype)
     end
 
-    ##
     # Return genome.
-
     def genome
       @genotype.map(&:string).join
     end

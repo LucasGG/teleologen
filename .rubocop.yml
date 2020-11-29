@@ -3,3 +3,7 @@ require: rubocop-performance
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+
+Style/DocumentationMethod:
+  Enabled: true
+  RequireForNonPublicMethods: true

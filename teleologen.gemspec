@@ -22,6 +22,8 @@ Gem::Specification.new do |specification|
 
   specification.executables << 'teleologen'
 
+  specification.required_ruby_version = '>= 2.7.0'
+
   # specification.metadata = {
   #   "bug_tracker_uri"   => "https://github.com/ruby/rake/issues",
   #   "changelog_uri"     => "https://github.com/ruby/rake/blob/v#{s.version}/History.rdoc",

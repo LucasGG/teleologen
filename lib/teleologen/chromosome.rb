@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class Teleologen
-  ##
   # Binary chromosome.
-
   class Chromosome
     attr_reader :string, :klass
 
+    # Creates a new +chromosome+.
     def initialize(string = '', klass:)
       @string = string
       @klass = klass
