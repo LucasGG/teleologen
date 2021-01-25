@@ -3,13 +3,12 @@
 class Teleologen
   # Represents a single instance of the population.
   class Individual
-    attr_accessor :phenotype, :behavior
-    attr_reader :genotype
+    attr_reader :phenotype, :behavior, :genotype
 
     # Creates a new +individual+.
     def initialize(*phenotype, &behavior)
       self.phenotype = phenotype
-      self.behavior = behavior
+      @behavior = behavior
     end
 
     # Call behavior.
@@ -22,6 +21,7 @@ class Teleologen
       @genotype.map(&:string).join
     end
 
+    # Set phenotype and regenerate genotype.
     def phenotype=(phenotype)
       @phenotype = phenotype
       @genotype = @phenotype.map(&:to_chromosome)

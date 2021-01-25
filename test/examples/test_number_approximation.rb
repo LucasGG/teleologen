@@ -6,30 +6,45 @@ require 'teleologen'
 
 class TestNumberApproximation < Minitest::Test
   GOAL = 4_726_487
+  POPULATION_SIZE = 100
+  NUMBER_OF_GENERATIONS = 500
 
   def test_approximate_goal
     teleology = Teleologen::Teleology.new do |behavior|
-      GOAL / ((behavior - GOAL).abs**1.8 + 1)
+      GOAL / ((behavior - GOAL).abs**1.8 + 1) # Objetive function.
     end
 
-    population = Array.new(100) do
-      Teleologen::Individual.new(rand(0..100_000)) do |genotype|
-        genotype.first.to_parameter
-      end
-    end
+    population = initial_population(POPULATION_SIZE)
 
-    500.times do
-      population = Teleologen::Reproduction.new(population)
-                                           .reproduce(100, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
+    (NUMBER_OF_GENERATIONS - 1).times do
+      population = next_population(population, POPULATION_SIZE, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
     end
 
     best = population.max_by { |individual| teleology.calculate(individual.call) }
 
+    puts_individual(best, teleology: teleology)
+  end
+
+  private
+
+  def initial_population(size)
+    Array.new(size) do
+      Teleologen::Individual.new(rand(0..100_000)) do |genotype|
+        genotype.first.to_parameter
+      end
+    end
+  end
+
+  def next_population(old_population, size, teleology:, mutation_ratio:)
+    Teleologen::Reproduction.new(old_population).reproduce(size, teleology: teleology, mutation_ratio: mutation_ratio)
+  end
+
+  def puts_individual(individual, teleology:)
     puts %(
-      Individual: #{best}
-      Parameters: #{best.genotype.map(&:to_parameter).join(', ')}
-      Fitness: #{teleology.calculate(best.call)}
-      Genome: #{best.genome}
+      Individual: #{individual}
+      Parameters: #{individual.genotype.map(&:to_parameter).join(', ')}
+      Fitness: #{teleology.calculate(individual.call)}
+      Genome: #{individual.genome}
     )
   end
 end
