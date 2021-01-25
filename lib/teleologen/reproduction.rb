@@ -3,11 +3,12 @@
 class Teleologen
   # Reproduction between individuals.
   class Reproduction
-    # Creates a new +reproduction+ model for a population of +individual+s.
+    # Creates a new +reproduction+ model from a initial population of +individual+s.
     def initialize(population)
       @mating_pool = population
     end
 
+    # Generate a new population of +individual+ reproducing the initial population.
     def reproduce(n, teleology: nil, mutation_ratio: 0.001)
       roullete = Roullete.new(@mating_pool, teleology)
 

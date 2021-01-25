@@ -3,6 +3,7 @@
 class Teleologen
   # Apply cross over to chromosome reproduction.
   class CrossOver
+    # Creates a new +cross_over+ model.
     def initialize(male, female)
       @male = male
       @female = female

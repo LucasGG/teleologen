@@ -11,22 +11,27 @@ class Teleologen
       @klass = klass
     end
 
+    # Map chromosome string per allele.
     def map
       string.split('').map
     end
 
+    # Returns chromosome string size.
     def size
       string.size
     end
 
+    # Converts to parameter (entity of phenotype).
     def to_parameter
       klass.from_chromosome(self)
     end
 
+    # Return each allele.
     def alleles(...)
       string.each_char(...)
     end
 
+    # Compare chromosomes.
     def ==(other)
       string == other.string && klass == other.klass
     end

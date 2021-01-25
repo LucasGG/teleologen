@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Teleologen
+  nil
 end
 
 require 'teleologen/chromosome'

@@ -9,6 +9,7 @@ class Teleologen
     def initialize(population, teleology)
       @population = population
       @teleology = teleology
+      @survivabilities = []
     end
 
     # Roll one individual.
@@ -20,7 +21,7 @@ class Teleologen
 
     # Calculate population survivabilities.
     def survivabilities
-      return @survivabilities if @survivabilities
+      return @survivabilities unless @survivabilities.empty?
 
       total_fitness = correlations.sum { |*, info| info[:fitness] }
 
