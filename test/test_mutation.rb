@@ -8,16 +8,16 @@ class TestMutation < Minitest::Test
   # TODO: Test with seed.
 
   INDIVIDUALS = [
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000).to_chromosome) { |genotype| genotype.first.to_parameter }
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |genotype| genotype.first.to_parameter }
   ].freeze
 
   def test_child

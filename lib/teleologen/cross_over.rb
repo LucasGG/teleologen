@@ -20,7 +20,7 @@ class Teleologen
         )
       end
 
-      Individual.new(*chromosomes, &@male.behavior)
+      Individual.new(*chromosomes.map(&:to_parameter), &@male.behavior)
     end
   end
 end

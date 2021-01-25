@@ -13,7 +13,7 @@ class TestNumberApproximation < Minitest::Test
     end
 
     population = Array.new(100) do
-      Teleologen::Individual.new(rand(0..100_000).to_chromosome) do |genotype|
+      Teleologen::Individual.new(rand(0..100_000)) do |genotype|
         genotype.first.to_parameter
       end
     end
