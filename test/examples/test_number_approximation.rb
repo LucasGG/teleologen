@@ -20,19 +20,15 @@ class TestNumberApproximation < Minitest::Test
       population = next_population(population, POPULATION_SIZE, teleology: teleology, mutation_ratio: 0.03125 / 2.0)
     end
 
-    best = population.max_by { |individual| teleology.calculate(individual.call) }
+    best_individual = population.max_by { |individual| teleology.calculate(individual.call) }
 
-    puts_individual(best, teleology: teleology)
+    puts_individual(best_individual, teleology: teleology)
   end
 
   private
 
   def initial_population(size)
-    Array.new(size) do
-      Teleologen::Individual.new(rand(0..100_000)) do |genotype|
-        genotype.first.to_parameter
-      end
-    end
+    Array.new(size) { Teleologen::Individual.new(rand(0..100_000), &:first) }
   end
 
   def next_population(old_population, size, teleology:, mutation_ratio:)

@@ -13,7 +13,7 @@ class Teleologen
 
     # Call behavior.
     def call
-      @behavior.call(@genotype)
+      @behavior.call(@phenotype)
     end
 
     # Return genome.
