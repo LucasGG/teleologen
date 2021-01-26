@@ -27,6 +27,9 @@ class TestCrossOver < Minitest::Test
     end
   end
 
+  private
+
+  # Test if child is son of the two parents.
   def child?(child, first_parent, second_parent)
     parent = first_parent
     parent_genome = parent.genome

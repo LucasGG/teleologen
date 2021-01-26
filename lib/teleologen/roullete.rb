@@ -13,8 +13,8 @@ class Teleologen
     end
 
     # Roll one individual.
-    def roll(n: rand)
-      survivabilities.find { |range| range[1][:survivability].cover?(n) }&.first || @population.sample
+    def roll(pivot: rand)
+      survivabilities.find { |range| range[1][:survivability].cover?(pivot) }&.first || @population.sample
     end
 
     private

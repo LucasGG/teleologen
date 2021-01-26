@@ -9,10 +9,10 @@ class Teleologen
     end
 
     # Generate a new population of +individual+ reproducing the initial population.
-    def reproduce(n, teleology: nil, mutation_ratio: 0.001)
+    def reproduce(size, teleology: nil, mutation_ratio: 0.001)
       roullete = Roullete.new(@mating_pool, teleology)
 
-      Array.new(n) do
+      Array.new(size) do
         Mutation.new(
           CrossOver.new(roullete.roll, roullete.roll).child,
           ratio: mutation_ratio

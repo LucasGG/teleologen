@@ -12,15 +12,27 @@ class Teleologen
     # Generates a child.
     def child
       chromosomes = @male.genotype.map.with_index do |chromosome, index|
-        pivot = rand(chromosome.string.size)
-
-        Chromosome.new(
-          @male.genotype[index].string[0...pivot] + @female.genotype[index].string[pivot...chromosome.string.size],
-          klass: chromosome.klass
-        )
+        next_chromosome(chromosome, @female.genotype[index])
       end
 
-      Individual.new(*chromosomes.map(&:to_parameter), &@male.behavior)
+      behavior = @male.behavior
+
+      Individual.new(*chromosomes.map(&:to_parameter), &behavior)
+    end
+
+    private
+
+    # Generate next chromosome for child.
+    def next_chromosome(male_chromosome, female_chromosome)
+      size = male_chromosome.size
+      pivot = rand(size)
+
+      raise 'male and female chromosome must have the same size' if size != female_chromosome.size
+
+      Chromosome.new(
+        male_chromosome.string[0...pivot] + female_chromosome.string[pivot...size],
+        klass: male_chromosome.klass
+      )
     end
   end
 end

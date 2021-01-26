@@ -15,7 +15,9 @@ class Teleologen
         Chromosome.new(chromosome.alleles.map { |allele| mutate(allele) }.join, klass: chromosome.klass)
       end
 
-      Individual.new(*chromosomes.map(&:to_parameter), &@individual.behavior)
+      behavior = @individual.behavior
+
+      Individual.new(*chromosomes.map(&:to_parameter), &behavior)
     end
 
     private
