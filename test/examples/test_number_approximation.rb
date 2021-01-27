@@ -28,7 +28,7 @@ class TestNumberApproximation < Minitest::Test
   private
 
   def initial_population(size)
-    Array.new(size) { Teleologen::Individual.new(rand(0..100_000), &:first) }
+    Array.new(size) { Teleologen::Individual.new(rand(0..100_000)) { |first_parameter| first_parameter } }
   end
 
   def next_population(old_population, size, teleology:, mutation_ratio:)

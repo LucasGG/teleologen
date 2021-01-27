@@ -6,16 +6,16 @@ require 'teleologen'
 
 class TestCrossOver < Minitest::Test
   INDIVIDUALS = [
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first),
-    Teleologen::Individual.new(rand(0..10_000_000), &:first)
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
+    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter }
   ].freeze
 
   def test_child
