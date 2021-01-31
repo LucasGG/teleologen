@@ -1,0 +1,63 @@
+name: Master PR and Push
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  rspec:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Set up gems
+      run: gem install bundler -v '2.2.7' --no-document
+
+    - name: Test
+      timeout-minutes: 2
+      run: rake
+
+  rubocop:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Set up gems
+      run: |
+        gem install bundler -v '2.2.7' --no-document
+        gem install rubocop rubocop-performance --no-document
+
+    - name: Lint
+      timeout-minutes: 2
+      run: rubocop
+
+  docker:
+    name: Docker Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build
+      run: docker build .
