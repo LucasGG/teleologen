@@ -1,12 +1,12 @@
-name: Master PR and Push
+name: Main PR and Push
 
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
   rspec:
