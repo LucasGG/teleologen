@@ -23,14 +23,14 @@ class TestCrossOver < Minitest::Test
       first_parent = INDIVIDUALS.sample
       second_parent = INDIVIDUALS.sample
       child = Teleologen::CrossOver.new(first_parent, second_parent).child
-      assert child?(child, first_parent, second_parent)
+      assert possible_child?(child, first_parent, second_parent)
     end
   end
 
   private
 
   # Test if child is son of the two parents.
-  def child?(child, first_parent, second_parent)
+  def possible_child?(child, first_parent, second_parent)
     parent = first_parent
     parent_genome = parent.genome
 

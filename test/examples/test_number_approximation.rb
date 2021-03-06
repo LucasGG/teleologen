@@ -38,8 +38,8 @@ class TestNumberApproximation < Minitest::Test
   def puts_individual(individual, teleology:)
     puts %(
       Individual: #{individual}
-      Parameters: #{individual.genotype.map(&:to_parameter).join(', ')}
       Fitness: #{teleology.calculate(individual.call)}
+      Phenotype: [#{individual.phenotype.map(&:to_s).join(', ')}]
       Genome: #{individual.genome}
     )
   end

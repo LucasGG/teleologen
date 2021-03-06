@@ -22,7 +22,7 @@ Gem::Specification.new do |specification|
 
   specification.executables << 'teleologen'
 
-  specification.required_ruby_version = '>= 2.7.0'
+  specification.required_ruby_version = '~> 3.0.0'
 
   # specification.metadata = {
   #   "bug_tracker_uri"   => "https://github.com/ruby/rake/issues",

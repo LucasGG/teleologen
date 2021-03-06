@@ -1,12 +1,12 @@
-name: Master PR and Push
+name: Main PR and Push
 
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
   rspec:
@@ -20,10 +20,10 @@ jobs:
     - name: Set up ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 3.0.x
 
     - name: Set up gems
-      run: gem install bundler -v '2.2.7' --no-document
+      run: gem install bundler -v '2.2.12' --no-document
 
     - name: Test
       timeout-minutes: 2
@@ -40,11 +40,11 @@ jobs:
     - name: Set up ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 3.0.x
 
     - name: Set up gems
       run: |
-        gem install bundler -v '2.2.7' --no-document
+        gem install bundler -v '2.2.12' --no-document
         gem install rubocop rubocop-performance --no-document
 
     - name: Lint
