@@ -5,48 +5,55 @@ class Teleologen
   #
   # Roulletes serves to return infinite individuals with a probability proportional to their fitness.
   class Roullete
+    Slice = Struct.new(:individual, :fitness, :survivability)
+
     # Creates a new roullete for a +population+ and +teleology+.
     def initialize(population, teleology)
       @population = population
       @teleology = teleology
-      @survivabilities = []
     end
 
     # Roll one individual.
-    def roll(pivot: rand)
-      survivabilities.find { |range| range[1][:survivability].cover?(pivot) }&.first || @population.sample
+    def roll(survivability: rand)
+      population_total_fitness.zero? ? @population.sample : search_slice_by_survivability(survivability).individual
     end
 
     private
 
-    # Calculate population survivabilities.
-    def survivabilities
-      return @survivabilities unless @survivabilities.empty?
+    # Search slice for the roulette based on survivability.
+    def search_slice_by_survivability(survivability)
+      population_slices.bsearch do |slice|
+        individual_survivability = slice.survivability
 
-      total_fitness = correlations.sum { |*, info| info[:fitness] }
-
-      @survivabilities = correlations.each.with_object(pivot: 0.0).map do |correlation, actual_range|
-        generate_range(correlation[1], actual_range, total_fitness)
-        correlation
+        if individual_survivability.first > survivability
+          -1
+        elsif individual_survivability.last <= survivability
+          1
+        else
+          0
+        end
       end
     end
 
-    # Generate ranges for population roll.
-    def generate_range(info, survivability, total_fitness)
-      return if total_fitness.zero?
+    # Fills the initial population details.
+    def population_slices
+      return @population_slices if @population_slices
 
-      fitness = info[:fitness]
-      pivot = survivability[:pivot]
-      survivability_range = pivot...(pivot + fitness / total_fitness)
-      info[:survivability] = survivability_range
-      survivability[:pivot] = survivability_range.last
+      @population_slices = @population.map do |individual|
+        Slice.new(individual, @teleology.calculate(individual.call))
+      end
+
+      # Populate survivabilities.
+      @population_slices.reduce(0) do |head, slice|
+        (slice.survivability = head...(head + slice.fitness / population_total_fitness)).last
+      end
+
+      @population_slices
     end
 
-    # Get fitness to individual correlations.
-    def correlations
-      @correlations ||= @population.to_h do |individual|
-        [individual, { fitness: @teleology.calculate(individual.call) }]
-      end
+    # Calculate and return population total fitness.
+    def population_total_fitness
+      @population_total_fitness ||= population_slices.sum(&:fitness)
     end
   end
 end
