@@ -22,9 +22,6 @@ jobs:
       with:
         ruby-version: 3.0.x
 
-    - name: Set up gems
-      run: gem install bundler -v '2.2.12' --no-document
-
     - name: Test
       timeout-minutes: 2
       run: rake
@@ -43,9 +40,7 @@ jobs:
         ruby-version: 3.0.x
 
     - name: Set up gems
-      run: |
-        gem install bundler -v '2.2.12' --no-document
-        gem install rubocop rubocop-performance --no-document
+      run: gem install rubocop rubocop-performance --no-document
 
     - name: Lint
       timeout-minutes: 2
