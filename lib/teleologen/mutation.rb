@@ -24,7 +24,7 @@ class Teleologen
 
     # Simple mutation, 0 to 1 or 1 to 0 with a @ratio chance.
     def mutate(allele)
-      if rand < @ratio
+      if Teleologen.rand <= @ratio
         allele == '0' ? '1' : '0'
       else
         allele

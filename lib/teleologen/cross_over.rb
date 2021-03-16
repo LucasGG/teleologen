@@ -25,7 +25,7 @@ class Teleologen
     # Generate next chromosome for child.
     def next_chromosome(male_chromosome, female_chromosome)
       size = male_chromosome.size
-      pivot = rand(size)
+      pivot = Teleologen.rand(size)
 
       raise 'male and female chromosome must have the same size' if size != female_chromosome.size
 

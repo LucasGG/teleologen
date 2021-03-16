@@ -14,7 +14,7 @@ class Teleologen
     end
 
     # Roll one individual.
-    def roll(survivability: rand)
+    def roll(survivability: Teleologen.rand)
       population_total_fitness.zero? ? @population.sample : search_slice_by_survivability(survivability).individual
     end
 

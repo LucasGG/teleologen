@@ -18,7 +18,7 @@ class Teleologen
 
     # Return genome.
     def genome
-      @genotype.map(&:string).join
+      @genome ||= @genotype.map(&:string).join
     end
 
     # Set phenotype and regenerate genotype.
