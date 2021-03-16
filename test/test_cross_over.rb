@@ -5,47 +5,33 @@ require 'minitest/autorun'
 require 'teleologen'
 
 class TestCrossOver < Minitest::Test
-  INDIVIDUALS = [
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter },
-    Teleologen::Individual.new(rand(0..10_000_000)) { |first_parameter| first_parameter }
-  ].freeze
+  NUMBER_OF_ASSERTIONS = 1000
 
   def test_child
-    100.times do
-      first_parent = INDIVIDUALS.sample
-      second_parent = INDIVIDUALS.sample
+    individuals = Array.new(100) do
+      Teleologen::Individual.new(Teleologen.rand(0..100_000_000)) { |first_parameter| first_parameter }
+    end
+
+    NUMBER_OF_ASSERTIONS.times do
+      first_parent = individuals.sample
+      second_parent = individuals.sample
       child = Teleologen::CrossOver.new(first_parent, second_parent).child
-      assert possible_child?(child, first_parent, second_parent)
+      assert possible_cross_over?(child, first_parent, second_parent)
     end
   end
 
   private
 
-  # Test if child is son of the two parents.
-  def possible_child?(child, first_parent, second_parent)
+  # Test if some child is a possible cross over of the parents.
+  def possible_cross_over?(child, first_parent, second_parent)
     parent = first_parent
-    parent_genome = parent.genome
-
-    return parent_genome == second_parent.genome if first_parent == second_parent
 
     child.genome.each_char.with_index do |character, index|
-      next if parent_genome[index] == character
+      next if parent.genome[index] == character
 
-      if parent == first_parent
-        parent = second_parent
-        parent_genome = parent.genome
-        next
-      end
+      return false if parent != first_parent
 
-      return false
+      parent = second_parent
     end
 
     true

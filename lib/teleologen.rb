@@ -1,7 +1,19 @@
 # frozen_string_literal: true
 
+# Main class.
 class Teleologen
-  nil
+  class Error < StandardError; end
+
+  class << self
+    attr_accessor :random_source
+
+    # Generates rand number from random source.
+    def rand(*args)
+      random_source.rand(*args)
+    end
+  end
+
+  self.random_source = Kernel
 end
 
 require 'teleologen/chromosome'
