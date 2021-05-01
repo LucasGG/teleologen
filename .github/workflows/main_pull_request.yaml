@@ -20,7 +20,7 @@ jobs:
     - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
+        ruby-version: 3.0.1
         bundler-cache: true
 
     - name: Test
@@ -38,7 +38,7 @@ jobs:
     - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
+        ruby-version: 3.0.1
         bundler-cache: true
 
     - name: Lint
