@@ -24,4 +24,16 @@ Gem::Specification.new do |specification|
   end
 
   specification.executables << 'teleologen'
+
+  # A make-like build utility for Ruby.
+  specification.add_development_dependency 'rake'
+
+  # Complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.
+  specification.add_development_dependency 'minitest'
+
+  # A Ruby static code analyzer and formatter, based on the community Ruby style guide.
+  specification.add_development_dependency 'rubocop'
+
+  # An extension of RuboCop focused on code performance checks.
+  specification.add_development_dependency 'rubocop-performance'
 end
