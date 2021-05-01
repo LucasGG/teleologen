@@ -18,13 +18,14 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up ruby
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
+        ruby-version: 3.0.1
+        bundler-cache: true
 
     - name: Test
       timeout-minutes: 2
-      run: rake test
+      run: bundle exec rake test
 
   rubocop:
     name: Lint
@@ -35,16 +36,14 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up ruby
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
-
-    - name: Set up gems
-      run: gem install rubocop rubocop-performance --no-document
+        ruby-version: 3.0.1
+        bundler-cache: true
 
     - name: Lint
       timeout-minutes: 2
-      run: rubocop
+      run: bundle exec rubocop
 
   docker:
     name: Docker Build

@@ -13,7 +13,7 @@ class Teleologen
 
     # Map chromosome string per allele.
     def map
-      string.split('').map
+      string.chars.map
     end
 
     # Returns chromosome string size.
