@@ -11,7 +11,11 @@ on:
 jobs:
   rspec:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
     - name: Checkout
