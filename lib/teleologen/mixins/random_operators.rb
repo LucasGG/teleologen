@@ -2,6 +2,7 @@
 
 class Teleologen
   module Mixins
+    # Canonical operators from Goldberg's book.
     module RandomOperators
       # Returns Teleologen#rand.
       def rand(...)

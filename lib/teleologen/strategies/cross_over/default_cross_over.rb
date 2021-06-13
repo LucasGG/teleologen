@@ -3,6 +3,7 @@
 class Teleologen
   # Implementation of a Simple Cross Over.
   class DefaultCrossOver < CrossOver
+    # Return one individual.
     def apply
       chromosomes = @first_invidual.genotype.map.with_index do |chromosome, index|
         next_chromosome(chromosome, @second_individual.genotype[index])

@@ -3,6 +3,7 @@
 class Teleologen
   # Implementation of a Mutation.
   class DefaultMutation < Mutation
+    # Return one individual.
     def apply
       chromosomes = @individual.genotype.map do |chromosome|
         Chromosome.new(chromosome.alleles.map { |allele| mutate(allele) }.join, klass: chromosome.klass)
