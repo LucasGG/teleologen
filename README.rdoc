@@ -1,0 +1,7 @@
+* validar implementação com cap. 3
+
+* destilar quais as interfaces e as necessidades do usuário
+
+* produzir o domínio interno com boas práticas e destresa na linguagem
+
+* fazer o diagrama de domínio tanto da interface quanto do desenho interno (se os dois forem diferentes)

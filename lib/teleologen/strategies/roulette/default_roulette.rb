@@ -1,20 +1,12 @@
 # frozen_string_literal: true
 
 class Teleologen
-  # This class represents the roullete implementation for genetic algorithm.
-  #
-  # Roulletes serves to return infinite individuals with a probability proportional to their fitness.
-  class Roullete
+  # Implementation of a Roulette.
+  class DefaultRoulette < Roulette
     Slice = Struct.new(:individual, :fitness, :survivability)
 
-    # Creates a new roullete for a +population+ and +teleology+.
-    def initialize(population, teleology)
-      @population = population
-      @teleology = teleology
-    end
-
     # Roll one individual.
-    def roll(survivability: Teleologen.rand)
+    def roll(survivability: rand)
       population_total_fitness.zero? ? @population.sample : search_slice_by_survivability(survivability).individual
     end
 

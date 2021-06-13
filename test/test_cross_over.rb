@@ -15,7 +15,7 @@ class TestCrossOver < Minitest::Test
     NUMBER_OF_ASSERTIONS.times do
       first_parent = individuals.sample
       second_parent = individuals.sample
-      child = Teleologen::CrossOver.new(first_parent, second_parent).child
+      child = Teleologen::DefaultCrossOver.new(first_parent, second_parent).apply
       assert possible_cross_over?(child, first_parent, second_parent)
     end
   end
