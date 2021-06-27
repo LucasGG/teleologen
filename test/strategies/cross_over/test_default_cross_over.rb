@@ -4,7 +4,7 @@ require 'minitest/autorun'
 
 require 'teleologen'
 
-class TestCrossOver < Minitest::Test
+class TestDefaultCrossOver < Minitest::Test
   NUMBER_OF_ASSERTIONS = 1000
 
   def test_child
