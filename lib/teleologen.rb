@@ -16,12 +16,17 @@ class Teleologen
   self.random_source = Kernel
 end
 
+# Load mixins.
+require 'teleologen/mixins/random_operators'
+
+# Load GA main classes.
 require 'teleologen/chromosome'
 require 'teleologen/individual'
 require 'teleologen/reproduction'
 require 'teleologen/teleology'
-require 'teleologen/roullete'
+require 'teleologen/roulette'
 require 'teleologen/cross_over'
 require 'teleologen/mutation'
 
+# Load chromosome converter implementations.
 require 'teleologen/chromosomes/integer'

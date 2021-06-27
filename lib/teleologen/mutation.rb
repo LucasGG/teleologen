@@ -3,32 +3,15 @@
 class Teleologen
   # Apply mutation to chromosome.
   class Mutation
+    prepend Mixins::RandomOperators
+
     # Creates a new +mutation+ model for +individual+.
     def initialize(individual, ratio: 0.001)
       @individual = individual
       @ratio = ratio
     end
-
-    # Generates a child.
-    def child
-      chromosomes = @individual.genotype.map do |chromosome|
-        Chromosome.new(chromosome.alleles.map { |allele| mutate(allele) }.join, klass: chromosome.klass)
-      end
-
-      behavior = @individual.behavior
-
-      Individual.new(*chromosomes.map(&:to_parameter), &behavior)
-    end
-
-    private
-
-    # Simple mutation, 0 to 1 or 1 to 0 with a @ratio chance.
-    def mutate(allele)
-      if Teleologen.rand <= @ratio
-        allele == '0' ? '1' : '0'
-      else
-        allele
-      end
-    end
   end
 end
+
+require_relative 'strategies/mutation/default_mutation'
+require_relative 'strategies/mutation/goldberg_cap3_mutation'

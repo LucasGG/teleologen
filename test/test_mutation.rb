@@ -25,6 +25,6 @@ class TestMutation < Minitest::Test
 
   def new_mutated_child_genome
     parent = parents.sample(random: Teleologen.random_source)
-    Teleologen::Mutation.new(parent).child.genome
+    Teleologen::DefaultMutation.new(parent).apply.genome
   end
 end
