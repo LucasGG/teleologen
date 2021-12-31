@@ -31,7 +31,6 @@ jobs:
       timeout-minutes: 2
       run: bundle exec rake test
 
-
   rubocop:
     name: Lint
     runs-on: ubuntu-latest

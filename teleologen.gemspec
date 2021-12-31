@@ -36,7 +36,7 @@ Gem::Specification.new do |specification|
 
   # An extension of RuboCop focused on code performance checks.
   specification.add_development_dependency 'rubocop-performance'
-  
+
   # Make your gems more secure by requiring that all privileged operations by any of the owners require OTP.
   specification.metadata['rubygems_mfa_required'] = 'true'
 end
