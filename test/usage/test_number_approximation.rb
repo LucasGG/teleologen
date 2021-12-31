@@ -9,7 +9,7 @@ class TestNumberApproximation < Minitest::Test
   POPULATION_SIZE = 100
   NUMBER_OF_GENERATIONS = 500
   MUTATION_RATIO = 0.03125 / 2.0
-  TELEOLOGY = Teleologen::Teleology.new { |behavior| GOAL / ((behavior - GOAL).abs**1.8 + 1) }
+  TELEOLOGY = Teleologen::Teleology.new { |behavior| GOAL / (((behavior - GOAL).abs**1.8) + 1) }
 
   def test_approximate_goal
     Teleologen.random_source = Random.new(43_942)
