@@ -31,9 +31,12 @@ Gem::Specification.new do |specification|
   # Complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.
   specification.add_development_dependency 'minitest'
 
-  # A Ruby static code analyzer and formatter, based on the community Ruby style guide.
+  # A static code analyzer and formatter, based on the community Ruby style guide.
   specification.add_development_dependency 'rubocop'
 
   # An extension of RuboCop focused on code performance checks.
   specification.add_development_dependency 'rubocop-performance'
+  
+  # Make your gems more secure by requiring that all privileged operations by any of the owners require OTP.
+  specification.metadata['rubygems_mfa_required'] = 'true'
 end

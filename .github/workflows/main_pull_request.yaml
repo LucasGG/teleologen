@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - name: Checkout
@@ -24,7 +24,7 @@ jobs:
     - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.1
+        ruby-version: 3.0
         bundler-cache: true
 
     - name: Test
@@ -42,20 +42,9 @@ jobs:
     - name: Set up ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.1
+        ruby-version: 3.0
         bundler-cache: true
 
     - name: Lint
       timeout-minutes: 2
       run: bundle exec rubocop
-
-  docker:
-    name: Docker Build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Build
-      run: docker build .

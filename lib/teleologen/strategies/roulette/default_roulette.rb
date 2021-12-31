@@ -37,7 +37,7 @@ class Teleologen
 
       # Populate survivabilities.
       @population_slices.reduce(0) do |head, slice|
-        (slice.survivability = head...(head + slice.fitness / population_total_fitness)).last
+        (slice.survivability = head...(head + (slice.fitness / population_total_fitness))).last
       end
 
       @population_slices

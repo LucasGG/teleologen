@@ -12,6 +12,6 @@ class Integer
   # Converts a chromosome to integer.
   def self.from_chromosome(chromosome)
     chromosome_size = chromosome.size
-    chromosome.map.with_index { |allele, locus| allele.to_i * 2**(chromosome_size - 1 - locus) }.sum
+    chromosome.map.with_index { |allele, locus| allele.to_i * (2**(chromosome_size - 1 - locus)) }.sum
   end
 end
